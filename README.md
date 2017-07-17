@@ -1,24 +1,29 @@
 json-schema-builder
 ===================
 
+Notice
+______
+
+This is a fork of the package [JSON Schema builder](https://github.com/atomiqio/json-schema-builder) that I created because I had a PR outstanding, with no comment, for over a year. Not expecting that to get merged.
+
 [![NPM](https://nodei.co/npm/json-schema-builder.png?compact=true)](https://nodei.co/npm/json-schema-builder/)
 
 Create syntactically correct [JSON Schema](http://json-schema.org/) with a fluent JavaScript API.
 
     npm install --save json-schema-builder
-    
-See the [wiki](https://github.com/atomiqio/json-schema-builder/wiki) and [tests](https://github.com/atomiqio/json-schema-builder/blob/master/src/test/test.js) for documentation and examples.
+
+See the [wiki](https://github.com/atomiqio/json-schema-builder/wiki) and [tests](https://github.com/tshelburne/json-schema-builder/blob/master/src/test/test.js) for documentation and examples.
 
 
 Basic Usage
 -----------
-    
+
 Use json-schema-builder to create an empty schema object:
 
     var jsb = require('json-schema-builder');
     var schema = jsb.schema();
 
-Use `.json()` on any JSON schema builder object to generate actual JSON Schema: 
+Use `.json()` on any JSON schema builder object to generate actual JSON Schema:
 
     var doc = schema.json()
 
@@ -35,20 +40,20 @@ One such constraint is `type`. For schemas that have a `type` constraint, there 
 ##### type constraint for any schema
 
     var schema = jsb.schema().type( <value> )
-    
+
 where `value` is a string specifying any valid JSON Schema type (`boolean`, `integer`, `number`, `string`, `array`, `object`, and `null`).
 
 Unless creating an empty schema as shown in the previous section, it is **not** necessary to explicitly invoke `schema()` as shown here. The following example shows the equivalent (and preferred) form:
-    
+
     var schema = jsb.type('string')
-    
+
 The `type` constraint can be used to restrict JSON instances to a particular set of acceptable types. The following example demonstrates how to specify a list of types that could be used to validate JSON instances that are either integer or string values:
 
     var schema = jsb.type( 'integer', 'string' );
 
-    
+
 `type` has convenient wrappers corresponding to all the valid JSON Schema types:
-    
+
     var integerSchema = jsb.integer();  // jsb.type('integer')
     var numberSchema  = jsb.number();   // jsb.type('number')
     var booleanSchema = jsb.boolean();  // jsb.type('boolean')
@@ -56,7 +61,7 @@ The `type` constraint can be used to restrict JSON instances to a particular set
     var arraySchema   = jsb.array();    // jsb.type('array')
     var objectSchema  = jsb.object();   // jsb.type('object')
     var nullSchema    = jsb.null();     // jsb.type('null')
-    
+
 Using `integerSchema` from this example, `integerSchema.json()` would generate the following JSON Schema document (or fragment):
 
     {
@@ -101,11 +106,11 @@ See [Validation for object types](https://github.com/atomiqio/json-schema-builde
 ### Saving a schema to file
 
 There is a convenience `save` method for saving a schema to a file. It generates output as JSON Schema and saves it as a UTF-8, formatted JSON file with 2-space indentation.
-    
+
 
     // save to a file synchronously
     schema.save(path, to, filename);
-    
+
     // save to a file asynchronously
     schema.save(filename, function(err) {
       ...
@@ -118,4 +123,4 @@ Tests
 
     npm test
 
-`json-schema-builder` provides [tests](https://github.com/atomiqio/json-schema-builder/blob/master/src/test/test.js) to verify the API can generate all the schemas that comprise the standard [JSON Schema Test Suite](https://github.com/json-schema/JSON-Schema-Test-Suite).
+`json-schema-builder` provides [tests](https://github.com/tshelburne/json-schema-builder/blob/master/src/test/test.js) to verify the API can generate all the schemas that comprise the standard [JSON Schema Test Suite](https://github.com/json-schema/JSON-Schema-Test-Suite).
