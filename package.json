@@ -1,6 +1,6 @@
 {
-  "name": "json-schema-builder",
-  "version": "0.0.5",
+  "name": "fluent-schema-builder",
+  "version": "0.1.0",
   "description": "Library for generating JSON Schema.",
   "main": "./dist/lib",
   "scripts": {
@@ -10,21 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atomiqio/json-schema-builder.git"
+    "url": "git+https://github.com/tshelburne/json-schema-builder.git"
   },
   "keywords": [
     "JSON",
     "schema"
   ],
   "contributors": [
-    "Tony Pujals (http://twitter.com/subfuzion)",
-    "Peter Svetlichny (http://twitter.com/p_svetlichny)"
+    "Tim Shelburne (http://twitter.com/subfuzion)"
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/atomiqio/json-schema-builder/issues"
+    "url": "https://github.com/tshelburne/json-schema-builder/issues"
   },
-  "homepage": "https://github.com/atomiqio/json-schema-builder#readme",
+  "homepage": "https://github.com/tshelburne/json-schema-builder#readme",
   "dependencies": {
     "babel-runtime": "^5.4.7",
     "lodash": "^3.10.0"
