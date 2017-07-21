@@ -105,14 +105,17 @@ See [Validation for object types](https://github.com/atomiqio/json-schema-builde
 
 ### Saving a schema to file
 
-There is a convenience `save` method for saving a schema to a file. It generates output as JSON Schema and saves it as a UTF-8, formatted JSON file with 2-space indentation.
+There is a convenience `save` function for saving a schema to a file. It generates output as JSON Schema and saves it as a UTF-8, formatted JSON file with 2-space indentation. In older versions, this was implemented as a method on the Schema class, but that restricted the library from being used in the browser (because of fs and path).
 
+    import save from 'fluent-schema-builder/dist/lib/save'
+
+    ...
 
     // save to a file synchronously
-    schema.save(path, to, filename);
+    save(schema, path, to, filename);
 
     // save to a file asynchronously
-    schema.save(filename, function(err) {
+    save(schema, filename, function(err) {
       ...
     });
 

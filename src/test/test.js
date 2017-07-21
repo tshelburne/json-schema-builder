@@ -3,6 +3,7 @@ import testSuite from 'json-schema-test-suite';
 import * as _ from 'lodash';
 import { isEqual, stringify } from './helpers';
 import * as json from '../lib';
+import save from '../lib/save'
 import { mkdirSync } from 'fs';
 import { join } from 'path';
 import del from 'del';
@@ -698,7 +699,7 @@ describe('Tests', () => {
   }
 
   function test(schema, sample) {
-    schema.save(actualDir, sample);
+    save(schema, actualDir, sample);
     assertMatch(sample);
   }
 
@@ -719,7 +720,7 @@ describe('Tests', () => {
       const schema = json.schema().string();
       const sample = 'sample1.json';
 
-      schema.save(actualDir, sample, (err) => {
+      save(schema, actualDir, sample, (err) => {
         if (err) return done(err)
         assertMatch(sample);
         done();
@@ -729,7 +730,7 @@ describe('Tests', () => {
     it('should write sample schema sync', () => {
       const schema = json.schema().string();
       const sample = 'sample1.json';
-      schema.save(actualDir, sample);
+      save(schema, actualDir, sample);
       assertMatch(sample);
     });
 
